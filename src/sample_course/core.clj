@@ -1,4 +1,4 @@
-(ns sample-project.core
+(ns sample-course.core
   (:require [clojurecademy.dsl.core :refer :all]))
 
 
