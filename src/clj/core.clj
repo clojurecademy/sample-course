@@ -85,7 +85,7 @@
                        'subj-math-fns)
 
                      (subject
-                       'subj-math-fns-with-pre-tests-on
+                       'subj-more-math-fns-with-pre-tests-on
                        "Let's write some math functions"
 
                        (learn
@@ -114,7 +114,17 @@
                                                      (testing
                                                        (is (= (my-subs 1) -1))
                                                        (is (= (my-subs 2 1) 1))
-                                                       (is (= (my-subs 100 1 2 3 4 5) 85)))))
+                                                       (is (= (my-subs 100 1 2 3 4 5) 85))))
+
+                                    (sub-instruction 'sub-ins-my-multi
+                                                     (text
+                                                       (p "Please write a function called "
+                                                          (hi "my-multi")
+                                                          " which multiplies given numbers"))
+                                                     (testing
+                                                       (is (= (my-multi 1) 1))
+                                                       (is (= (my-multi 2 1) 2))
+                                                       (is (= (my-multi 1 2 3 4 5 6) 720)))))
                        'subj-math-fns)))))
 
 
@@ -135,13 +145,13 @@
                  (apply - args)))
 
 (defcoursetest my-test-4
-               [ch-intro sub-ch-basics subj-math-fns-with-pre-tests-on ins-subj-math-fns sub-ins-my-add]
+               [ch-intro sub-ch-basics subj-more-math-fns-with-pre-tests-on ins-subj-math-fns sub-ins-my-add]
                (defn my-add
                  [& args]
                  (apply + args)))
 
 (defcoursetest my-test-5
-               [ch-intro sub-ch-basics subj-math-fns-with-pre-tests-on ins-subj-math-fns sub-ins-my-subs]
+               [ch-intro sub-ch-basics subj-more-math-fns-with-pre-tests-on ins-subj-math-fns sub-ins-my-subs]
                (defn my-add
                  [& args]
                  (apply + args))
@@ -149,3 +159,18 @@
                (defn my-subs
                  [& args]
                  (apply - args)))
+
+
+(defcoursetest my-test-6
+               [ch-intro sub-ch-basics subj-more-math-fns-with-pre-tests-on ins-subj-math-fns sub-ins-my-multi]
+               (defn my-add
+                 [& args]
+                 (apply + args))
+
+               (defn my-subs
+                 [& args]
+                 (apply - args))
+
+               (defn my-multi
+                 [& args]
+                 (apply * args)))
