@@ -217,7 +217,7 @@
                                                        (is (true? true))))))
 
                      (subject 'subj-rule-restricted-ex
-                              "Last Element"
+                              "Rule Restricted Fn - Last Element"
 
                               (learn
                                 (text
@@ -241,7 +241,7 @@
                               'rule-restricted-ex)
 
                      (subject 'subj-rule-only-one-fn-ex
-                              "Last Element"
+                              "Rule Only One Fn - Last Element"
 
                               (learn
                                 (text
@@ -265,7 +265,7 @@
                               'rule-only-one-fn-ex)
 
                      (subject 'subj-rule-required-fn-ex
-                              "Last Element"
+                              "Rule Required Fn - Last Element"
 
                               (learn
                                 (text
@@ -287,11 +287,109 @@
                                                               (is (= (my-last [1 2 3 4 5]) 5) nil :advanced)
                                                               (is (= (my-last '(5 4 3)) 3) nil :advanced)
                                                               (is (= (my-last ["b" "c" "d"]) "d") nil :advanced))))
-                              'rule-required-fn-ex)))))
+                              'rule-required-fn-ex)
+
+                     (subject 'subj-is-err-msgs
+                              "Err messages - Last Element"
+
+                              (learn
+                                (text
+                                  (p "Write a function called " (hi "my-last") " which returns the last element in a sequence.")))
+
+                              (instruction 'ins-is-err-msgs
+                                           (run-pre-tests? false)
+                                           (initial-code :none)
+                                           (rule :no-rule? true)
+
+                                           (sub-instruction 'sub-ins-is-err-msgs
+                                                            (text
+                                                              (p "Tests need to pass:")
+                                                              (code (= (my-last [1 2 3 4 5]) 5)))
+                                                            (testing
+                                                              (is (= (my-last [1 2 3 4 5]) 5))
+                                                              ;;Comment out to see error messages
+                                                              ;(is (= (my-last [1 2 3 4 5]) 4))
+                                                              ;(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!")
+                                                              ;(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!" :none)
+                                                              ;(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!" :simple)
+                                                              ;(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!" :advanced)
+                                                              ;(is (= (my-last [1 2 3 4 5]) 4) nil :advanced)
+
+                                                              )))
+                              'is-err-msgs)
+
+                     (subject
+                       'subj-text
+                       "Text component"
+
+                       (learn
+                         (text
+                           (p "Clojure is a" (hi "functional programming") "language."
+                              "It runs on " (italic "JVM") " and " (bold "other platforms(JavaScript, CLR)")
+                              "Check Clojure's Official site: " (link "Clojure Site" "https://clojure.org"))
+
+                           (p "Here is the Clojure code:")
+                           (code (println "Hello, world"))
+
+                           (p "Also you can Clojure code like this:")
+                           (code "(defn my-fn\n          [x]\n          (println x))")
+
+                           (p "You wanna show some " (hi "Ruby") " code?")
+                           (code "ruby" "puts 'Hello, world!'")
+
+                           (p "Or some " (hi "python") "?")
+                           (code "python" "def printme( str ):\n   print str\n   return;"))))
+
+                     (subject 'subj-built-in-fns
+                              "Built in fns - Last Element"
+
+                              (learn
+                                (text
+                                  (p "Please check built-in functions")))
+
+                              (instruction 'ins-built-in-fns
+                                           (run-pre-tests? false)
+                                           (initial-code :none)
+                                           (rule :no-rule? true)
+
+                                           (sub-instruction 'sub-ins-built-in-fns
+                                                            (text
+                                                              (p "Built-in fns will be applied to your code for validation"))
+                                                            (testing
+                                                              (is (= '(println "Hello, world") (first (all-forms))))
+                                                              (is (form-used? (println "Hello, world")))
+                                                              (is (form-used-nes? (println "I'm Here!")))
+                                                              (is (= 'clojure-intro (second (ns-form))))
+                                                              (is (= '(println "Hello, world") (first-form)))
+                                                              (is (= '(defn my-add [& args] (apply + args)) (second-form)))
+                                                              (is (= '(- 3 2 1) (nth-form 2)))
+                                                              (is (= 6 (eval-ds (last (all-forms)))))
+                                                              (is (throws? RuntimeException (throw-runtime-ex))))))
+                              'built-in-fns)
+
+                     (subject 'subj-helper-fn-ex
+                              "Helper fn ex - Last Element"
+
+                              (learn
+                                (text
+                                  (p "Please check helper-fns")))
+
+                              (instruction 'ins-helper-fn-ex
+                                           (run-pre-tests? false)
+                                           (initial-code :none)
+                                           (rule :no-rule? true)
+
+                                           (sub-instruction 'sub-ins-helper-fn-ex
+                                                            (text
+                                                              (p "Helper fns will be applied to your code for validation"))
+                                                            (testing
+                                                              (is (str-join-used? (all-forms))))))
+                              'helper-fn-ex)))))
 
 
 (defcoursetest my-test-1
                [ch-intro sub-ch-basics subj-hello-world ins-clojure-helloworld sub-ins-hello-world]
+               ;; HERE IS THE CODE BODY THAT USERS PROVIDE TO US
                (println "Hello, World"))
 
 (defcoursetest my-test-2
@@ -380,4 +478,37 @@
                  ;;if you don't use last you will get an exception
                  (last x)))
 
+(defcoursetest my-test-14
+               [ch-intro sub-ch-basics subj-is-err-msgs ins-is-err-msgs sub-ins-is-err-msgs]
+               (defn my-last
+                 [x]
+                 (last x)))
 
+(defcoursetest my-test-15
+               [ch-intro sub-ch-basics subj-built-in-fns ins-built-in-fns sub-ins-built-in-fns]
+               (ns clojure-intro)
+
+               (println "Hello, world")
+
+               (defn my-add
+                 [& args]
+                 (apply + args))
+
+               (- 3 2 1)
+
+               (defn my-fn
+                 []
+                 (do
+                   (println "I'm Here!")))
+
+               (defn throw-runtime-ex
+                 []
+                 (throw (RuntimeException. "Damn!")))
+
+               (+ 1 2 3))
+
+(defcoursetest my-test-16
+               [ch-intro sub-ch-basics subj-helper-fn-ex ins-helper-fn-ex sub-ins-helper-fn-ex]
+               (ns string-example
+                 (:require [clojure.string :as str]))
+               (str/join ["er" "tus"]))

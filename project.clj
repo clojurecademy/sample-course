@@ -7,4 +7,5 @@
                  [clojurecademy/dsl "0.3.5"]]
   :eval-in :leiningen
   :plugins [[clojurecademy/lein-clojurecademy "0.1.2"]]
-  :clojurecademy {:course-map clj.core/course-map})
+  :clojurecademy {:course-map clj.core/course-map
+                  :helper-fns-ns clj.helper-fns})
