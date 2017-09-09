@@ -2,9 +2,9 @@
 
 
 (defn str-join-used?
-  [codes]
-  ((complement not-any?) (fn [code]
-                           (and (= 'str/join (first code))
-                                (vector? (second code))
-                                (= 2 (count (second code)))))
-    (filter list? codes)))
+  [all-forms]
+  ((complement not-any?) (fn [form]
+                           (and (= 'str/join (first form))
+                                (vector? (second form))
+                                (= 2 (count (second form)))))
+    (filter list? all-forms)))
