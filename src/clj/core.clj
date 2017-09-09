@@ -235,9 +235,9 @@
                                                               (code "(= (my-last '(5 4 3)) 3)")
                                                               (code (= (my-last ["b" "c" "d"]) "d")))
                                                             (testing
-                                                              (is (= (my-last [1 2 3 4 5]) 5) nil :advanced)
-                                                              (is (= (my-last '(5 4 3)) 3) nil :advanced)
-                                                              (is (= (my-last ["b" "c" "d"]) "d") nil :advanced))))
+                                                              (is (= (my-last [1 2 3 4 5]) 5) :default :advanced)
+                                                              (is (= (my-last '(5 4 3)) 3) :default :advanced)
+                                                              (is (= (my-last ["b" "c" "d"]) "d") :default :advanced))))
                               'rule-restricted-ex)
 
                      (subject 'subj-rule-only-one-fn-ex
@@ -259,9 +259,9 @@
                                                               (code "(= (my-last '(5 4 3)) 3)")
                                                               (code (= (my-last ["b" "c" "d"]) "d")))
                                                             (testing
-                                                              (is (= (my-last [1 2 3 4 5]) 5) nil :advanced)
-                                                              (is (= (my-last '(5 4 3)) 3) nil :advanced)
-                                                              (is (= (my-last ["b" "c" "d"]) "d") nil :advanced))))
+                                                              (is (= (my-last [1 2 3 4 5]) 5) :default :advanced)
+                                                              (is (= (my-last '(5 4 3)) 3) :default :advanced)
+                                                              (is (= (my-last ["b" "c" "d"]) "d") :default :advanced))))
                               'rule-only-one-fn-ex)
 
                      (subject 'subj-rule-required-fn-ex
@@ -284,9 +284,9 @@
                                                               (code "(= (my-last '(5 4 3)) 3)")
                                                               (code (= (my-last ["b" "c" "d"]) "d")))
                                                             (testing
-                                                              (is (= (my-last [1 2 3 4 5]) 5) nil :advanced)
-                                                              (is (= (my-last '(5 4 3)) 3) nil :advanced)
-                                                              (is (= (my-last ["b" "c" "d"]) "d") nil :advanced))))
+                                                              (is (= (my-last [1 2 3 4 5]) 5) :default :advanced)
+                                                              (is (= (my-last '(5 4 3)) 3) :default :advanced)
+                                                              (is (= (my-last ["b" "c" "d"]) "d") :default :advanced))))
                               'rule-required-fn-ex)
 
                      (subject 'subj-is-err-msgs
@@ -313,7 +313,7 @@
                                                               ;(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!" :none)
                                                               ;(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!" :simple)
                                                               ;(is (= (my-last [1 2 3 4 5]) 4) "Overwritten error message, it fails!" :advanced)
-                                                              ;(is (= (my-last [1 2 3 4 5]) 4) nil :advanced)
+                                                              ;(is (= (my-last [1 2 3 4 5]) 4) :default :advanced)
 
                                                               )))
                               'is-err-msgs)
