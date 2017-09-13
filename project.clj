@@ -8,11 +8,11 @@
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [clojurecademy/dsl "0.3.5"]]
+                 [clojurecademy "0.1.0"]]
 
   :eval-in :leiningen
 
-  :plugins [[clojurecademy/lein-clojurecademy "0.1.2"]]
+  :plugins [[lein-clojurecademy "0.1.0"]]
 
   :clojurecademy {:course-map clj.core/course-map
                   :helper-fns-ns clj.helper-fns})
