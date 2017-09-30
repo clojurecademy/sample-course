@@ -12,7 +12,7 @@
 
   :eval-in :leiningen
 
-  :plugins [[lein-clojurecademy "0.1.5"]]
+  :plugins [[lein-clojurecademy "0.1.55"]]
 
   :clojurecademy {:course-map clj.core/course-map
                   :helper-fns-ns clj.helper-fns})
